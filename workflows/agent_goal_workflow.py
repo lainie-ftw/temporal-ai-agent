@@ -167,10 +167,15 @@ class AgentGoalWorkflow:
                         #theory - set self.confirm to true bc that's the signal, so we can get around the signal??
                         self.confirm = True
 
+                    #if the current_tool = "ListAgents" but the goal is not goal_choose_agent_type, fix that
+                    if current_tool == "ListAgents" and self.goal.id != "goal_choose_agent_type":
+                        self.change_goal("goal_choose_agent_type")
+
                 # else if the next step is to pick a new goal...
-                elif next_step == "pick-new-goal":
-                    workflow.logger.info("All steps completed. Resetting goal.")
-                    self.change_goal("goal_choose_agent_type")
+                #if it's confirm and ListAgents but the current goal is not goal_choose_agent_type
+                #elif next_step == "pick-new-goal":
+                #    workflow.logger.info("All steps completed. Resetting goal.")
+                #    self.change_goal("goal_choose_agent_type")
                 
                 # else if the next step is to be done - this should only happen if the user requests it via "end conversation"
                 elif next_step == "done":
