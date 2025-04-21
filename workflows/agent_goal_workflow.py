@@ -147,6 +147,7 @@ class AgentGoalWorkflow:
                 # process the tool as dictated by the prompt response - what to do next, and with which tool
                 next_step = tool_data.get("next")
                 current_tool = tool_data.get("tool")
+                print(f"next step is {next_step}, current tool is {current_tool}.")
 
                 workflow.logger.info(f"next_step: {next_step}, current tool is {current_tool}")
 
@@ -249,17 +250,10 @@ class AgentGoalWorkflow:
         )
 
     def change_goal(self, goal: str) -> None:
-        '''goalsLocal = {
-            "goal_match_train_invoice": goal_match_train_invoice,
-            "goal_event_flight_invoice": goal_event_flight_invoice,
-            "goal_choose_agent_type": goal_choose_agent_type,
-        }'''
-
         if goal is not None:
             for listed_goal in goal_list:
                 if listed_goal.id == goal:
                     self.goal = listed_goal
-        #    self.goal = goals.get(goal)
                     workflow.logger.info("Changed goal to " + goal)
         #todo reset goal or tools if this doesn't work or whatever
 

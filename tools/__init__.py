@@ -15,6 +15,9 @@ from .hr.future_pto_calc import future_pto_calc
 from .give_hint import give_hint
 from .guess_location import guess_location
 
+from .ecommerce.get_order import get_order
+from .ecommerce.track_package import track_package
+from .ecommerce.list_orders import list_orders
 
 def get_handler(tool_name: str):
     if tool_name == "SearchFixtures":
@@ -41,6 +44,12 @@ def get_handler(tool_name: str):
         return book_pto
     if tool_name == "FuturePTOCalc":
         return future_pto_calc
+    if tool_name == "GetOrder":
+        return get_order
+    if tool_name == "TrackPackage":
+        return track_package
+    if tool_name == "ListOrders":
+        return list_orders   
     if tool_name == "GiveHint":
         return give_hint
     if tool_name == "GuessLocation":
