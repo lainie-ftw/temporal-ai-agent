@@ -147,7 +147,6 @@ class AgentGoalWorkflow:
                 # process the tool as dictated by the prompt response - what to do next, and with which tool
                 next_step = tool_data.get("next")
                 current_tool = tool_data.get("tool")
-                print(f"next step is {next_step}, current tool is {current_tool}.")
 
                 workflow.logger.info(f"next_step: {next_step}, current tool is {current_tool}")
 
